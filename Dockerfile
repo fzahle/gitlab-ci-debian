@@ -1,6 +1,5 @@
-# Run with the DockerSpawner in JupyterHub
 
-FROM  debian:jessie
+FROM buildpack-deps:jessie
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
