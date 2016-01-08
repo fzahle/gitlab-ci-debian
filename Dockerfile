@@ -21,4 +21,4 @@ RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar
   && cd openmpi-1.6.5 \
   && ./configure --prefix=/usr/local --disable-dlopen \
   && make all install \
-  && ENV LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/local/lib"
+  && ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
