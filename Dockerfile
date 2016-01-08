@@ -6,7 +6,7 @@ MAINTAINER Frederik Zahle <frza@dtu.dk>
 ENV SHELL /bin/bash
 
 RUN apt-get update \
- && apt-get install -y -q \
+ && apt-get install --fix-missing -y -q \
     gfortran \
     git-all \
     python-pip \
