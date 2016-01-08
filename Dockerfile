@@ -8,8 +8,6 @@ ENV SHELL /bin/bash
 RUN apt-get update \
  && apt-get install -y -q \
     gfortran \
-    openmpi-bin \
-    libopenmpi-dev \
     git-all \
     python-pip \
     python-dev \
@@ -18,4 +16,9 @@ RUN apt-get update \
     python-scipy \
  && apt-get autoremove -y \
  && apt-get clean -y
-
+RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
+  && tar -xzf openmpi-1.6.5.tar.gz \
+  && cd openmpi-1.6.5 \
+  && ./configure --prefix=/usr/local --disable-dlopen \
+  && make all install \
+  && ENV LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/local/lib"
