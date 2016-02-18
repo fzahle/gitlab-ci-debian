@@ -31,7 +31,7 @@ RUN wget --quiet \
 RUN conda update --quiet --yes conda \
   && conda create -y -n py35 python=3.5 \
   && conda create -y -n py27 python=2.7 \
-  && source activate py27 \
+  && /bin/bash -c "source activate py27" \
   && conda install pip numpy scipy nose \
-  && source activate py35 \
+  && /bin/bash -c "source activate py35" \
   && conda install pip numpy scipy nose
