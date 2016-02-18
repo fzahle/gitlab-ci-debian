@@ -20,13 +20,16 @@ RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar
   && make all install \
   && ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 # Install miniconda to /miniconda
-RUN curl -LO http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh \
-  && bash Miniconda-latest-Linux-x86_64.sh -p /miniconda -b \
-  && rm Miniconda-latest-Linux-x86_64.sh \
-  && PATH=/miniconda/bin:${PATH}
-RUN conda update -y conda \
-  && conda create -n py35 python=3.5 anaconda \
-  && conda create -n py27 python=2.7 anaconda \
+ENV CONDA_ENV_PATH /opt/miniconda
+RUN wget --quiet \
+    https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh && \
+    bash Miniconda-latest-Linux-x86_64.sh -b -p $CONDA_ENV_PATH && \
+    rm Miniconda-latest-Linux-x86_64.sh && \
+    chmod -R a+rx $CONDA_ENV_PATH
+ENV PATH $CONDA_ENV_PATH/bin:$PATH
+RUN conda update --quiet --yes conda
+  && conda create -y -n py35 python=3.5 \
+  && conda create -y -n py27 python=2.7 \
   && source activate py27 \
   && conda install pip numpy scipy nose \
   && source activate py35 \
