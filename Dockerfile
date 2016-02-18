@@ -28,7 +28,7 @@ RUN wget --quiet \
     bash Miniconda-latest-Linux-x86_64.sh -b -p $CONDA_ENV_PATH && \
     rm Miniconda-latest-Linux-x86_64.sh && \
     chmod -R a+rx $CONDA_ENV_PATH
-RUN conda update --quiet --yes conda
+RUN conda update --quiet --yes conda \
   && conda create -y -n py35 python=3.5 \
   && conda create -y -n py27 python=2.7 \
   && source activate py27 \
