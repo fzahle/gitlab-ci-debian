@@ -21,7 +21,6 @@ RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar
   && tar -xzf openmpi-1.6.5.tar.gz \
   && cd openmpi-1.6.5 \
   && ./configure --prefix=/usr/local --disable-dlopen \
-  && make all install \
-  && pip install --upgrade numpy scipy
+  && make all install
 
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
