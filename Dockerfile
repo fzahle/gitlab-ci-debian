@@ -14,6 +14,7 @@ RUN apt-get update \
     gfortran \
     git-all \
     curl \
+    libhdf5-dev \
     build-essential \
  && apt-get autoremove -y \
  && apt-get clean -y
