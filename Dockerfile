@@ -14,7 +14,6 @@ RUN apt-get update \
     gfortran \
     git-all \
     curl \
-    libhdf5-dev \
     build-essential \
  && apt-get autoremove -y \
  && apt-get clean -y
@@ -34,6 +33,6 @@ RUN conda update --quiet --yes conda \
   && conda create -y -n py35 python=3.5 \
   && conda create -y -n py27 python=2.7 \
   && /bin/bash -c "source activate py27 \
-  && conda install pip numpy scipy nose" \
+  && conda install pip numpy scipy nose hdf5" \
   && /bin/bash -c "source activate py35 \
-  && conda install pip numpy scipy nose"
+  && conda install pip numpy scipy nose hdf5"
