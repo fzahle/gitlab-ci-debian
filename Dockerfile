@@ -36,3 +36,5 @@ RUN conda update --quiet --yes conda \
   && conda install pip numpy scipy nose hdf5" \
   && /bin/bash -c "source activate py35 \
   && conda install pip numpy scipy nose hdf5"
+
+RUN echo 'ulimit -s unlimited' >> .bashrc
