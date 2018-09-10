@@ -1,6 +1,7 @@
 # Docker file for gitlab CI test image
 
-FROM buildpack-deps:jessie
+# FROM buildpack-deps:jessie
+FROM gcc:8.2
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
@@ -11,15 +12,14 @@ ENV PATH $CONDA_ENV_PATH/bin:$PATH
 
 RUN apt-get update \
  && apt-get install --fix-missing -y -q \
-    gfortran \
     git-all \
     curl \
-    build-essential libhdf5-8 libhdf5-dev \
+    build-essential libhdf5-dev \
  && apt-get autoremove -y \
  && apt-get clean -y
-RUN wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz \
-  && tar -xzf openmpi-1.6.5.tar.gz \
-  && cd openmpi-1.6.5 \
+RUN wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.gz \ 
+  && tar -xzf openmpi-3.1.2.tar.gz \
+  && cd openmpi-3.1.2 \
   && ./configure --prefix=/usr/local --disable-dlopen \
   && make all install
 
