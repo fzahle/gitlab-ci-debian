@@ -1,7 +1,7 @@
 # Docker file for gitlab CI test image
 
 # FROM buildpack-deps:jessie
-FROM gcc:8.2
+FROM gcc:7.3
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
@@ -20,7 +20,7 @@ RUN apt-get update \
 RUN wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.gz \ 
   && tar -xzf openmpi-3.1.2.tar.gz \
   && cd openmpi-3.1.2 \
-  && ./configure --prefix=/usr/local --disable-dlopen \
+  && ./configure --prefix=/usr/local \
   && make all install
 
 # Install miniconda to /miniconda
