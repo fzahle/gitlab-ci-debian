@@ -1,6 +1,6 @@
 # Docker file for gitlab CI test image
 
-FROM buildpack-deps:jessie
+FROM buildpack-deps:stretch
 
 MAINTAINER Frederik Zahle <frza@dtu.dk>
 
