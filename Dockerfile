@@ -48,13 +48,14 @@ RUN update-alternatives --install /usr/bin/cc cc /usr/local/bin/gcc 999 \
   && pip install coverage \
   && pip install mpi4py \
   && pip install -v petsc==3.11 \
-  && pip install -v petsc4py==3.11" \
-  && /bin/bash -c "source activate py35 \
-  && pip install --upgrade pip \
-  && pip install Cython \
-  && pip install coverage \
-  && pip install mpi4py \
-  && pip install -v petsc==3.11 \
   && pip install -v petsc4py==3.11"
+# dropping support for py35 for now
+# && /bin/bash -c "source activate py35 \
+# && pip install --upgrade pip \
+# && pip install Cython \
+# && pip install coverage \
+# && pip install mpi4py \
+# && pip install -v petsc==3.11 \
+# && pip install -v petsc4py==3.11"
 
 RUN echo 'ulimit -s unlimited' >> .bashrc
