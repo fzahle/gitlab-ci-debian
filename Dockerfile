@@ -21,8 +21,6 @@ RUN wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.g
   && tar -xzf openmpi-3.1.2.tar.gz \
   && cd openmpi-3.1.2 \
   && ./configure --prefix=/usr/local \
-  && --with-verbs \
-  && --enable-mpirun-prefix-by-default \
   && make all install
 
 # Install miniconda to /miniconda
